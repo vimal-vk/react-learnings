@@ -100,6 +100,41 @@ root.render(
 );
 ```
 
+### Rendering Lists
+
+Rendering the list can be done using just js inside the jsx
+
+```jsx
+<ul className='pizzas'>
+  {pizzaData.map((pizza) => (
+    <Pizza key={pizza.id} pizzaObj={pizza} />
+  ))};
+</ul>
+```
+We cannot use forEach as we need to return the component array in order to render it for react
+
+### Conditional Rendering
+
+#### With and (&&)
+
+JSX won't render boolean values directly, so using and operator to check anything true and render the next element based on that
+
+```jsx
+{isOpen && <h1>Open</h1>}
+```
+
+#### With ternary (? :)
+
+```jsx
+{isOpen ? <h1>Open</h1> : <h1>Not Open</h1>}
+```
+
+### React Fragments
+
+Fragments allows us to group jsx without any changes to the html tree
+Fragments can be indicated by just (<> </>)
+
+
 ## Pizza Menu Building
 
 ### First Level Components
@@ -120,3 +155,40 @@ Write custom logic for closing and opening time of the restaurant in the footer 
 
 Applied styling using external index.css for the header, footer and menu components using class name at index.css
 
+### Adding the list
+
+For dynamic rendering of the pizza, have used unordered list and using map to render each pizza properly
+Now the pizzas will render dynamically based on the data provided instead of static rendering
+
+### Using ternary Operator
+
+For to show dynamic value based on open or closed, we are rendering dynamic value using ternary operator to show appropriate message
+
+### Dividing Components
+
+Made Order as seperate component and moved closeHour through props
+
+### Destructing Props
+
+For the first object, instead of single props, using it as object with parent prop names for destructoring
+
+### Fragmented pizzas and description
+
+For grouping the description for menu and pizzas based on pizza condition, have grouped them using React.Fragment to avoid extra tree
+
+### Making sold out
+
+Adding sold out class dynamically for the sold out pizzas from the data that have sold out key as true
+
+### Changing the Title
+
+Changing the title as 'Pizza Restaurant' at index.html for proper title instead of React App
+
+### Component Tree
+
+- App
+  - Header
+  - Menu
+    - Pizza
+  - Footer
+    - Order
